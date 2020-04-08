@@ -10,7 +10,7 @@ def withLock(Closure cl) {
     }
 }
 
-def call(version="2.6.1", method=null, cl) {
+def call(version="2.6.6", method=null, cl) {
     print "Setting up Ruby version: ${version}"
 
     withLock {
