@@ -23,6 +23,7 @@ def call(version="2.6.6", method=null, cl) {
             """
             sh "git clone https://github.com/rbenv/ruby-build.git ${rbenvRoot}/plugins/ruby-build"
         } else {
+            print "Updating rbenv & ruby-build"
             sh "cd ${rbenvRoot} && git pull"
             sh "cd ${rbenvRoot}/plugins/ruby-build && git pull"
         }
