@@ -14,15 +14,13 @@ def call(version="2.6.6", method=null, cl) {
     print "Setting up Ruby version: ${version}"
 
     withLock {
-        if (!fileExists("${rbenv}")) {
-            print "Installing rbenv"
-            sh """
-            git clone https://github.com/rbenv/rbenv.git ${rbenvRoot}
-            cd "${rbenvRoot}"
-            src/configure --without-ssl && make -C src
-            """
-            sh "git clone https://github.com/rbenv/ruby-build.git ${rbenvRoot}/plugins/ruby-build"
-        }
+        print "Installing rbenv"
+        sh """
+        git clone https://github.com/rbenv/rbenv.git ${rbenvRoot}
+        cd "${rbenvRoot}"
+        src/configure --without-ssl && make -C src
+        """
+        sh "git clone https://github.com/rbenv/ruby-build.git ${rbenvRoot}/plugins/ruby-build"
 
         if (!fileExists("${rbenvRoot}/versions/${version}/")) {
             print "Installing Ruby version: ${version}"
