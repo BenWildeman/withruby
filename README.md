@@ -43,12 +43,20 @@ With the [Global Shared Libraries](https://jenkins.io/doc/book/pipeline/shared-l
 
 
 ### withRuby(version, method)
-* `version` - specify which Ruby version to use. **Default** `2.6.1`
+* `version` - specify which Ruby version to use. **Default** `2.6.6`
 * `method` - specify whether to keep or delete the Ruby version after use. **Default** `keep`
 
 ```groovy
 script {
-    withRuby("2.4.0") {
+    withRuby() {
+        sh "ruby --version"
+    }
+}
+```
+
+```groovy
+script {
+    withRuby("2.7.1", "delete") {
         sh "ruby --version"
     }
 }
